@@ -44,11 +44,12 @@ As of now, this API is registered in MyJSUIWebView.h, so please remove the respe
 
 **Adding required files to Project**
 
-Objective-C Code: Drag and drop "MyJSWebView" folder on to iOS project and add as "Add folders-> Create Groups" option
-JavaScript Code: Drag and drop "my" folder on to iOS project and add as "Add folders-> Create folder references" option
-Example Code: Drag and drop "ExampleAPIs" folder on to iOS project and add as "Add folders-> Create Groups" option
+* **Objective-C Code:** Drag and drop "MyJSWebView" folder on to iOS project and add as "Add folders-> Create Groups" option
+* **JavaScript Code:** Drag and drop "my" folder on to iOS project and add as "Add folders-> Create folder references" option
+* **Example Code:** Drag and drop "ExampleAPIs" folder on to iOS project and add as "Add folders-> Create Groups" option
 
 **Adding required files to Project**
+
 Your View Controller code should look like this by updating appropriately.
 
 ```obj-c
