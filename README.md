@@ -10,8 +10,8 @@ iOS:
 To run Javascript in Native Code we are using **– stringByEvaluatingJavaScriptFromString:** method.
 
 ###Communication Mechanism from JavaScript to Native Code
-To communicate with Native code from JavaScript we are using **URL Schema mechanism** as follows
-	native-api:ModuleName:MethodName:JSON Object Parameter
+To communicate with Native code from JavaScript we are using **URL Schema mechanism**
+* native-api:ModuleName:MethodName:JSON Object Parameter
 
 But above mechanisms are irrelevant to developer as MyJSWebView module will be taken care, provides you JavaScript APIs to corresponding Native APIs and vice versa.
 
@@ -24,21 +24,21 @@ Create your own xCode project with a View Controller with UIWebView in it.
 **Copying required files**
 
 Copy the folder "MyJSWebView" into your project which contains following files
-. MyJSBaseNativeModule.h
-. MyJSBaseNativeModule.m
-. MyJSUIWebView.h
-. MyJSUIWebView.m
+* MyJSBaseNativeModule.h
+* MyJSBaseNativeModule.m
+* MyJSUIWebView.h
+* MyJSUIWebView.m
 
 Copy the folder "my" (JavaScript and HTML code with example) to your project which contains following files
-. css\bootstrap.css	-> CSS file
-. index.html		-> Index file with example code
-. my.js				-> MyJS module and mandatory to include in your index.html (if different)
-. my_clientdb.js	-> If need persistent memory/database, can include in your index.html
-. my_test.js		-> Example JavaScript code having Native APIs mapped 
+* css\bootstrap.css	-> CSS file
+* index.html		-> Index file with example code
+* my.js				-> MyJS module and mandatory to include in your index.html (if different)
+* my_clientdb.js	-> If need persistent memory/database, can include in your index.html
+* my_test.js		-> Example JavaScript code having Native APIs mapped 
 
-Optionally, you can copy the Example Code "ExampleAPIs" for reference. Contains following files
-. TestAPIOne.h
-. TestAPIOne.m
+Optionally, you can copy the Example Code "ExampleAPIs" for reference Contains following files
+* TestAPIOne.h
+* TestAPIOne.m
 
 As of now, this API is registered in MyJSUIWebView.h, so please remove the respective code if your are not using the above.
 
