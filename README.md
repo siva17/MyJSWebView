@@ -79,19 +79,50 @@ Your View Controller code should look like this by updating appropriately.
 
 Run it and you are good to go.
 
+###Adding Native Modules (like Example **TestAPIOne**)
 
+Add new Objective-C Class (say Example) inheriting from **MyJSBaseNativeModule**, then you should see
+* **Example.h file**
+```obj-c
+#import "MyJSBaseNativeModule.h"
+@interface TestAPIOne : MyJSBaseNativeModule
 
-JSON Object from JavaScript can have callback and should have the key as **callback**
-For example
-```js
-{
-	"key1" : "key1 Value",
-	"callback" : function(param) {
-		console.log("CallBack Parameter : "+JSON.stringify(param);
-	}
-}
+@end
+```
+* **Example.m file**
+```obj-c
+#import "example.h"
+
+@implementation TestAPIOne
+
+@end
 ```
 
+Goto MyJSUIWebView.m file and look for **registerJavaScriptAPIs** methond. Add following line of code to register your module
+```obj-c
+[self registerNativeModule:[[Example alloc]initWithWebView:self] jsModule:@"Example"];
+```
 
+Now you can have all the Native APIs accessible in JavaScript as
+```js
+// API with no parameters
+Example.testAPI()
 
+// API with parameters and no call back
+Example.testAPI({
+	"key1" : "key1 Value",
+})
 
+// API with parameters and call back
+Example.testAPI({
+    "key1" : "key1 Value",
+    "callback" : function(param) {
+        console.log("CallBack Parameter : "+JSON.stringify(param);
+    }
+})
+```
+
+**Please note: **
+* If API needs to have callback function then JSON Object passed should have the key as **callback**
+* Native APIs can return only string type (NSString which will translate to string in JavaScript)
+* Check out ExampleAPIs->TestAPIOne.m file for more possible options
