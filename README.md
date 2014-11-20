@@ -44,11 +44,11 @@ As of now, this API is registered in MyJSUIWebView.h, so please remove the respe
 
 **Adding required files to Project**
 
-* **Objective-C Code:** Drag and drop "MyJSWebView" folder on to iOS project and add as "Add folders-> Create Groups" option
-* **JavaScript Code:** Drag and drop "my" folder on to iOS project and add as "Add folders-> Create folder references" option
-* **Example Code:** Drag and drop "ExampleAPIs" folder on to iOS project and add as "Add folders-> Create Groups" option
+* **Objective-C Code:** Drag and drop "MyJSWebView" folder on to iOS project and add as "Add folders -> Create Groups" option
+* **JavaScript Code:** Drag and drop "my" folder on to iOS project and add as "Add folders -> Create folder references" option
+* **Example Code:** Drag and drop "ExampleAPIs" folder on to iOS project and add as "Add folders -> Create Groups" option
 
-**Adding required files to Project**
+**Here is the update in your Project and is simple**
 
 Your View Controller code should look like this by updating appropriately.
 
@@ -73,13 +73,9 @@ Your View Controller code should look like this by updating appropriately.
 @end
 ```
 
-Goto your Storyboard or xib containing your View Controller and add WebView to it appropriately.
-Select the WebView 
-Go to Custom Class tab.
-Update the Class to “MyJSUIWebView” and Restoration ID to “MyJSUIWebView”
-Go to Outlets tab (last) 
-You should see “webView” in Referencing Outlets (as you have defined in your View Controller).
-Map it to View Controller.
+* Goto your Storyboard or xib containing your View Controller and add WebView to it appropriately. Select the WebView 
+* Go to Custom Class tab and update the Class to “MyJSUIWebView” and Restoration ID to “MyJSUIWebView”
+* Go to Outlets tab (last) and you should see “webView” in Referencing Outlets (as you have defined in your View Controller). Map it to View Controller.
 
 Run it and you are good to go.
 
