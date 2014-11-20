@@ -47,13 +47,13 @@
 -(void)APIFour:(NSDictionary *)config {
     NSLog(@"Called APIFour. Function with Config Parameter with call back and no return value");
     NSLog(@"Config : %@",config);
-    [self callCallback:config];
+    [self.myWebView callCallback:config];
 }
 
 -(NSString *)APIFive:(NSDictionary *)config {
     NSLog(@"Called APIFive. Function with Config Parameter with call back and has string return value");
     NSLog(@"Config : %@",config);
-    [self callCallback:config];
+    [self.myWebView callCallback:config];
     return @"Success Of APIFive";
 }
 
@@ -65,11 +65,11 @@
         NSLog(@"Start of the Process");
         
         for (int i=0; i<50000; i++) {
-            NSString *temp = [NSString stringWithFormat:@"STR:%d",i];
+//            NSString *temp = [NSString stringWithFormat:@"STR:%d",i];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self callCallback:config];
+            [self.myWebView callCallback:config];
             NSLog(@"End of the Process");
         });
     });
@@ -84,11 +84,11 @@
         NSLog(@"Start of the Process");
 
         for (int i=0; i<50000; i++) {
-            NSString *temp = [NSString stringWithFormat:@"STR:%d",i];
+//            NSString *temp = [NSString stringWithFormat:@"STR:%d",i];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self callCallback:config];
+            [self.myWebView callCallback:config];
             NSLog(@"End of the Process");
         });
     });

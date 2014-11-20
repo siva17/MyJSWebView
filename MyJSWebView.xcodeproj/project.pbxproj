@@ -14,9 +14,10 @@
 		84C357EB1A1D80F80041FD8D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C357EA1A1D80F80041FD8D /* Images.xcassets */; };
 		84C357EE1A1D80F80041FD8D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C357EC1A1D80F80041FD8D /* LaunchScreen.xib */; };
 		84C357FA1A1D80F80041FD8D /* MyJSWebViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C357F91A1D80F80041FD8D /* MyJSWebViewTests.m */; };
-		84C358051A1D8DFA0041FD8D /* BaseNativeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C358041A1D8DFA0041FD8D /* BaseNativeModule.m */; };
 		84C358091A1D8E020041FD8D /* TestAPIOne.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C358081A1D8E020041FD8D /* TestAPIOne.m */; };
-		84C3580B1A1D8EDF0041FD8D /* my in Resources */ = {isa = PBXBuildFile; fileRef = 84C3580A1A1D8EDF0041FD8D /* my */; };
+		84CFAB241A1E42D200560BA7 /* my in Resources */ = {isa = PBXBuildFile; fileRef = 84CFAB231A1E42D200560BA7 /* my */; };
+		84CFAB2A1A1E42DC00560BA7 /* MyJSBaseNativeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CFAB271A1E42DC00560BA7 /* MyJSBaseNativeModule.m */; };
+		84CFAB2B1A1E42DC00560BA7 /* MyJSUIWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CFAB291A1E42DC00560BA7 /* MyJSUIWebView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,11 +44,13 @@
 		84C357F31A1D80F80041FD8D /* MyJSWebViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyJSWebViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C357F81A1D80F80041FD8D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84C357F91A1D80F80041FD8D /* MyJSWebViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyJSWebViewTests.m; sourceTree = "<group>"; };
-		84C358031A1D8DFA0041FD8D /* BaseNativeModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNativeModule.h; sourceTree = "<group>"; };
-		84C358041A1D8DFA0041FD8D /* BaseNativeModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNativeModule.m; sourceTree = "<group>"; };
 		84C358071A1D8E020041FD8D /* TestAPIOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestAPIOne.h; sourceTree = "<group>"; };
 		84C358081A1D8E020041FD8D /* TestAPIOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestAPIOne.m; sourceTree = "<group>"; };
-		84C3580A1A1D8EDF0041FD8D /* my */ = {isa = PBXFileReference; lastKnownFileType = folder; path = my; sourceTree = SOURCE_ROOT; };
+		84CFAB231A1E42D200560BA7 /* my */ = {isa = PBXFileReference; lastKnownFileType = folder; path = my; sourceTree = SOURCE_ROOT; };
+		84CFAB261A1E42DC00560BA7 /* MyJSBaseNativeModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyJSBaseNativeModule.h; sourceTree = "<group>"; };
+		84CFAB271A1E42DC00560BA7 /* MyJSBaseNativeModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyJSBaseNativeModule.m; sourceTree = "<group>"; };
+		84CFAB281A1E42DC00560BA7 /* MyJSUIWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyJSUIWebView.h; sourceTree = "<group>"; };
+		84CFAB291A1E42DC00560BA7 /* MyJSUIWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyJSUIWebView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,14 +92,13 @@
 		84C357DC1A1D80F80041FD8D /* MyJSWebView */ = {
 			isa = PBXGroup;
 			children = (
-				84C3580A1A1D8EDF0041FD8D /* my */,
+				84CFAB251A1E42DC00560BA7 /* MyJSWebView */,
+				84CFAB231A1E42D200560BA7 /* my */,
 				84C358061A1D8E020041FD8D /* ExampleAPIs */,
 				84C357E11A1D80F80041FD8D /* AppDelegate.h */,
 				84C357E21A1D80F80041FD8D /* AppDelegate.m */,
 				84C357E41A1D80F80041FD8D /* ViewController.h */,
 				84C357E51A1D80F80041FD8D /* ViewController.m */,
-				84C358031A1D8DFA0041FD8D /* BaseNativeModule.h */,
-				84C358041A1D8DFA0041FD8D /* BaseNativeModule.m */,
 				84C357E71A1D80F80041FD8D /* Main.storyboard */,
 				84C357EA1A1D80F80041FD8D /* Images.xcassets */,
 				84C357EC1A1D80F80041FD8D /* LaunchScreen.xib */,
@@ -138,6 +140,17 @@
 				84C358081A1D8E020041FD8D /* TestAPIOne.m */,
 			);
 			path = ExampleAPIs;
+			sourceTree = "<group>";
+		};
+		84CFAB251A1E42DC00560BA7 /* MyJSWebView */ = {
+			isa = PBXGroup;
+			children = (
+				84CFAB261A1E42DC00560BA7 /* MyJSBaseNativeModule.h */,
+				84CFAB271A1E42DC00560BA7 /* MyJSBaseNativeModule.m */,
+				84CFAB281A1E42DC00560BA7 /* MyJSUIWebView.h */,
+				84CFAB291A1E42DC00560BA7 /* MyJSUIWebView.m */,
+			);
+			path = MyJSWebView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,7 +233,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84C3580B1A1D8EDF0041FD8D /* my in Resources */,
+				84CFAB241A1E42D200560BA7 /* my in Resources */,
 				84C357E91A1D80F80041FD8D /* Main.storyboard in Resources */,
 				84C357EE1A1D80F80041FD8D /* LaunchScreen.xib in Resources */,
 				84C357EB1A1D80F80041FD8D /* Images.xcassets in Resources */,
@@ -243,8 +256,9 @@
 			files = (
 				84C357E61A1D80F80041FD8D /* ViewController.m in Sources */,
 				84C358091A1D8E020041FD8D /* TestAPIOne.m in Sources */,
-				84C358051A1D8DFA0041FD8D /* BaseNativeModule.m in Sources */,
 				84C357E31A1D80F80041FD8D /* AppDelegate.m in Sources */,
+				84CFAB2A1A1E42DC00560BA7 /* MyJSBaseNativeModule.m in Sources */,
+				84CFAB2B1A1E42DC00560BA7 /* MyJSUIWebView.m in Sources */,
 				84C357E01A1D80F80041FD8D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,6 +452,7 @@
 				84C357FF1A1D80F80041FD8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		84C358001A1D80F80041FD8D /* Build configuration list for PBXNativeTarget "MyJSWebViewTests" */ = {
 			isa = XCConfigurationList;
@@ -446,6 +461,7 @@
 				84C358021A1D80F80041FD8D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

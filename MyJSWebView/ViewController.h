@@ -26,14 +26,7 @@
 // SOFTWARE.
 //
 //
-
 #import <UIKit/UIKit.h>
-// Should be with out .html extension
-#define INDEX_FILE_PATH_AND_FILE	@"my/index"
-//Case insensitive
-#define NATIVE_API_SCHEMA			@"native-api"
-
-@interface ViewController : UIViewController <UIWebViewDelegate>
-
+@interface ViewController : UIViewController
 @end
 

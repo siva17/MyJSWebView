@@ -1,5 +1,5 @@
 //
-//  BaseNativeModule.m
+//  MyJSBaseNativeModule.h
 //  MyJSWebView
 //
 //  Created by Siva RamaKrishna Ravuri
@@ -25,32 +25,15 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-#import "BaseNativeModule.h"
+//
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "MyJSUIWebView.h"
 
-@interface BaseNativeModule()
-@property(nonatomic,retain) UIWebView *thisWebView;
-@end
+@interface MyJSBaseNativeModule : NSObject
 
-@implementation BaseNativeModule
+@property(nonatomic,assign) MyJSUIWebView *myWebView;
 
--(id)initWithWebView:(UIWebView *)webView {
-    self = [super init];
-    if(self) self.thisWebView = webView;
-    return self;
-}
-
--(void)callCallback:(NSDictionary *)config {
-    if(config) {
-        NSString *callbackID = [config objectForKey:@"callbackID"];
-        if(callbackID) {
-            NSString *removeAfterExecute = [config objectForKey:@"removeAfterExecute"];
-            if(!removeAfterExecute) removeAfterExecute = @"true";
-            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:config options:0 error:nil];
-            NSString *jsonString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
-            NSString* jsAPIToExecute = [NSString stringWithFormat:@"MY.NATIVEAPI.invokeJSCallback(\"%@\", %@, %@);",callbackID,removeAfterExecute,jsonString];
-            if(self.thisWebView) [self.thisWebView stringByEvaluatingJavaScriptFromString:jsAPIToExecute];
-        }
-    }
-}
+-(id)initWithWebView:(MyJSUIWebView *)webView;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  TestAPIOne.h
+//  MyJSBaseNativeModule.m
 //  MyJSWebView
 //
 //  Created by Siva RamaKrishna Ravuri
@@ -25,7 +25,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 //
-//
 #import "MyJSBaseNativeModule.h"
-@interface TestAPIOne : MyJSBaseNativeModule
+
+@implementation MyJSBaseNativeModule
+
+-(id)initWithWebView:(MyJSUIWebView *)webView {
+    self = [super init];
+    if(self) self.myWebView = webView;
+    return self;
+}
 @end

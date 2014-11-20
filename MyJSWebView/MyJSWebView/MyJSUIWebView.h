@@ -1,5 +1,5 @@
 //
-//  BaseNativeModule.h
+//  MyJSUIWebView.h
 //  MyJSWebView
 //
 //  Created by Siva RamaKrishna Ravuri
@@ -26,9 +26,14 @@
 // SOFTWARE.
 //
 //
-#import <Foundation/Foundation.h>
+
+// Should be with out .html extension
+#define INDEX_FILE_PATH_AND_FILE	@"my/index"
+//Case insensitive
+#define NATIVE_API_SCHEMA			@"native-api"
+
 #import <UIKit/UIKit.h>
-@interface BaseNativeModule : NSObject
--(id)initWithWebView:(UIWebView *)_webView;
+@interface MyJSUIWebView : UIWebView <UIWebViewDelegate>
+-(void)initializeWebView;
 -(void)callCallback:(NSDictionary *)config;
 @end
