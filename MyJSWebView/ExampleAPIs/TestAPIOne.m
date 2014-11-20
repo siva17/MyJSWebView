@@ -47,7 +47,9 @@
 -(void)APIFour:(NSDictionary *)config {
     NSLog(@"Called APIFour. Function with Config Parameter with call back and no return value");
     NSLog(@"Config : %@",config);
-    [self.myWebView callCallback:config];
+    NSMutableDictionary *returnConfig = [[NSMutableDictionary alloc]initWithDictionary:config];
+    [returnConfig setObject:@"Returned Value" forKey:@"returned"];
+    [self.myWebView callCallback:returnConfig];
 }
 
 -(NSString *)APIFive:(NSDictionary *)config {

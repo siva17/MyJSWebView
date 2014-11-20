@@ -112,6 +112,14 @@ Add new Objective-C Class (say Example) inheriting from **MyJSBaseNativeModule**
     [self.myWebView callCallback:config];
 }
 
+-(void)APIThree:(NSDictionary *)config {
+	NSLog(@"Called APIFour. Function with Config Parameter with call back and no return value");
+	NSLog(@"Config : %@",config);
+    NSMutableDictionary *returnConfig = [[NSMutableDictionary alloc]initWithDictionary:config];
+    [returnConfig setObject:@"Returned Value" forKey:@"returned"];
+    [self.myWebView callCallback:returnConfig];
+}
+
 @end
 ```
 
