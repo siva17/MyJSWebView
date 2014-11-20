@@ -82,18 +82,20 @@ Run it and you are good to go.
 ###Adding Native Modules (like Example **TestAPIOne**)
 
 Add new Objective-C Class (say Example) inheriting from **MyJSBaseNativeModule**, then you should see
-* **Example.h file**
+
+**Example.h file**
 ```obj-c
 #import "MyJSBaseNativeModule.h"
-@interface TestAPIOne : MyJSBaseNativeModule
+@interface Example : MyJSBaseNativeModule
 
 @end
 ```
-* **Example.m file**
+
+**Example.m file**
 ```obj-c
 #import "example.h"
 
-@implementation TestAPIOne
+@implementation Example
 
 @end
 ```
@@ -122,7 +124,7 @@ Example.testAPI({
 })
 ```
 
-**Please note: **
+###Please note:
 * If API needs to have callback function then JSON Object passed should have the key as **callback**
 * Native APIs can return only string type (NSString which will translate to string in JavaScript)
 * Check out ExampleAPIs->TestAPIOne.m file for more possible options
