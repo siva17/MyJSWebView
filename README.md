@@ -112,7 +112,7 @@ Add new Objective-C Class (say Example) inheriting from **MyJSBaseNativeModule**
     [self.myWebView callCallback:config];
 }
 
--(void)APIThree:(NSDictionary *)config {
+-(void)APIFour:(NSDictionary *)config {
 	NSLog(@"Called APIFour. Function with Config Parameter with call back and no return value");
 	NSLog(@"Config : %@",config);
     NSMutableDictionary *returnConfig = [[NSMutableDictionary alloc]initWithDictionary:config];
@@ -143,6 +143,15 @@ Example.APITwo({
 Example.APIThree({
     "key1" : "key1 Value",
 	"key2" : "key2 Value",
+    "callback" : function(param) {
+        console.log("CallBack Parameter : "+JSON.stringify(param);
+    }
+})
+
+// API with parameters and call back with added returned value
+Example.APIFour({
+    "key1" : "key1 Value",
+    "key2" : "key2 Value",
     "callback" : function(param) {
         console.log("CallBack Parameter : "+JSON.stringify(param);
     }
