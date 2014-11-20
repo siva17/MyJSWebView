@@ -162,3 +162,8 @@ Example.APIFour({
 * If API needs to have callback function then JSON Object parameter should have the key as **callback**
 * Native APIs can return only string type (NSString which will translate to string in JavaScript)
 * Check out ExampleAPIs->TestAPIOne.m file for more possible options
+
+
+
+Credits: Concept is copied from github (https://github.com/andiradulescu/EasyJSWebView) and modified to my way of API (with config as parameter).
+
