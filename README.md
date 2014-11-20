@@ -48,7 +48,7 @@ As of now, this API is registered in MyJSUIWebView.h, so please remove the respe
 * **JavaScript Code:** Drag and drop "my" folder on to iOS project and add as "Add folders -> Create folder references" option
 * **Example Code:** Drag and drop "ExampleAPIs" folder on to iOS project and add as "Add folders -> Create Groups" option
 
-**Here is the update in your Project and is simple**
+**Here is the required update in your Project and is simple**
 
 Your View Controller code should look like this by updating appropriately.
 
@@ -113,11 +113,13 @@ Example.testAPI()
 // API with parameters and no call back
 Example.testAPI({
 	"key1" : "key1 Value",
+	"key2" : "key2 Value"
 })
 
 // API with parameters and call back
 Example.testAPI({
     "key1" : "key1 Value",
+	"key2" : "key2 Value",
     "callback" : function(param) {
         console.log("CallBack Parameter : "+JSON.stringify(param);
     }
@@ -125,6 +127,6 @@ Example.testAPI({
 ```
 
 ###Please note:
-* If API needs to have callback function then JSON Object passed should have the key as **callback**
+* If API needs to have callback function then JSON Object parameter should have the key as **callback**
 * Native APIs can return only string type (NSString which will translate to string in JavaScript)
 * Check out ExampleAPIs->TestAPIOne.m file for more possible options
