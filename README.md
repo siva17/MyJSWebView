@@ -11,7 +11,7 @@ To run Javascript in Native Code we are using **– stringByEvaluatingJavaScript
 
 ###Communication Mechanism from JavaScript to Native Code
 To communicate with Native code from JavaScript we are using **URL Schema mechanism** as follows
-	native-api:<ModuleName>:<MethodName>:<JSON Object Parameter>
+	native-api:ModuleName:MethodName:JSON Object Parameter
 
 But above mechanisms are irrelevant to developer as MyJSWebView module will be taken care, provides you JavaScript APIs to corresponding Native APIs and vice versa.
 
