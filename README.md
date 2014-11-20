@@ -97,6 +97,21 @@ Add new Objective-C Class (say Example) inheriting from **MyJSBaseNativeModule**
 
 @implementation Example
 
+-(void)APIOne {
+    NSLog(@"Called APIOne. Function with No Config Parameter and no return value");
+}
+
+-(void)APITwo:(NSDictionary *)config {
+    NSLog(@"Called APITwo. Function with Config Parameter and no return value");
+    NSLog(@"Config : %@",config);
+}
+
+-(void)APIThree:(NSDictionary *)config {
+    NSLog(@"Called APIFour. Function with Config Parameter with call back and no return value");
+    NSLog(@"Config : %@",config);
+    [self.myWebView callCallback:config];
+}
+
 @end
 ```
 
@@ -108,16 +123,16 @@ Goto MyJSUIWebView.m file and look for **registerJavaScriptAPIs** methond. Add f
 Now you can have all the Native APIs accessible in JavaScript as
 ```js
 // API with no parameters
-Example.testAPI()
+Example.APIOne()
 
 // API with parameters and no call back
-Example.testAPI({
+Example.APITwo({
 	"key1" : "key1 Value",
 	"key2" : "key2 Value"
 })
 
 // API with parameters and call back
-Example.testAPI({
+Example.APIThree({
     "key1" : "key1 Value",
 	"key2" : "key2 Value",
     "callback" : function(param) {
