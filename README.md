@@ -32,15 +32,22 @@ Copy the folder "MyJSWebView" into your project which contains following files
 Copy the folder "my" (JavaScript and HTML code with example) to your project which contains following files
 * css\bootstrap.css	-> CSS file
 * index.html		-> Index file with example code
-* my.js				-> MyJS module and mandatory to include in your index.html (if different)
-* my_clientdb.js	-> If need persistent memory/database, can include in your index.html
-* my_test.js		-> Example JavaScript code having Native APIs mapped 
+* js\test.js		-> Example JavaScript code having Native APIs mapped 
 
-Optionally, you can copy the Example Code "ExampleAPIs" for reference Contains following files
+If your index.html file is in different place, please make sure to change the name of the file (with out .html extension) in MyJSUIWebView\MyJSUIWebView\MyJSUIWebView.h file as shown below. You can also change the URL schema according to your required. As of now it is defined as 'native-api' as shown below.
+
+```obj-c
+// Should be with out .html extension
+#define INDEX_FILE_PATH_AND_FILE    @"my/index"
+//Case insensitive
+#define NATIVE_API_SCHEMA           @"native-api"
+```
+
+Optionally, you can copy the Example Code "ExampleAPIs" for reference Contains following files if you are using my\js\test.js file
 * TestAPIOne.h
 * TestAPIOne.m
 
-As of now, this API is registered in MyJSUIWebView.h, so please remove the respective code if your are not using the above.
+As of now, this API (TestAPIOne) is registered in MyJSUIWebView.h, so please remove the respective registration code if your are not using the above.
 
 **Adding required files to Project**
 
