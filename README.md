@@ -34,7 +34,7 @@ Copy the folder "my" (JavaScript and HTML code with example) to your project whi
 * index.html		-> Index file with example code
 * js\test.js		-> Example JavaScript code having Native APIs mapped 
 
-If your index.html file is in different place, please make sure to change the name of the file (with out .html extension) in MyJSUIWebView\MyJSUIWebView\MyJSUIWebView.h file as shown below. You can also change the URL schema according to your required. As of now it is defined as 'native-api' as shown below.
+If your index.html file is in different place, please make sure to change the name of the file (with out .html extension) in MyJSUIWebView\MyJSUIWebView\MyJSUIWebView.h file as shown below. You can also change the URL schema according to your requirement. As of now it is defined as 'native-api' as shown below.
 
 ```obj-c
 // Should be with out .html extension
