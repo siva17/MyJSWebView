@@ -49,6 +49,13 @@
 }
 
 -(void)injectJavaScriptAPIs {
+    
+    // Inject base JavaScript API for inject mechanism
+	[self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@%@%@",
+                                                  @"window.MY=window.MY||{};MY=(function(b,c){c.NATIVEAPI={};var a={};var d=function(j,i,f){var k=':';if(f){if(f.callback){var g='cbID'+(+new Date);a[g]=f.callback;f.callbackID=g}k+=encodeURIComponent(JSON.stringify(f))}var h=document.createElement('IFRAME');h.setAttribute('src','",
+                                                  NATIVE_API_SCHEMA,
+                                                  @"'+':'+j+':'+encodeURIComponent(i)+k);document.documentElement.appendChild(h);h.parentNode.removeChild(h);h=null;var e=MY.NATIVEAPI.retValue;MY.NATIVEAPI.retValue=undefined;if(e){return decodeURIComponent(e)}};c.NATIVEAPI.invokeJSCallback=function(g,h,f){var e=a[g];if(h){delete (a[g])}if(f.callbackID){delete (f.callbackID)}return e.call(null,f)};c.NATIVEAPI.registerJSModule=function(h,f){b[h]={};var j=b[h];for(var g=0,e=f.length;g<e;g++){(function(){var k=f[g];var i=k.replace(new RegExp(':','g'),'');j[i]=function(){return d(h,k,arguments[0])}})()}};return c})(window,MY);"]];
+    
     NSMutableString* injectJSAPI = [[NSMutableString alloc] init];
     for(id key in self.nativeModules) {
         NSObject* jsModule = [self.nativeModules objectForKey:key];
@@ -63,8 +70,11 @@
         free(mlist);
         [injectJSAPI appendString:@"]);"];
     }
+    // Inject all registered APIs into JavaScript.
     [self stringByEvaluatingJavaScriptFromString:injectJSAPI];
-    [self stringByEvaluatingJavaScriptFromString:@"if(MY.onDeviceReady) MY.onDeviceReady();"];
+    
+    // Call onDeviceReady JavaScript function if exits
+    [self stringByEvaluatingJavaScriptFromString:@"if(window.onDeviceReady) window.onDeviceReady();"];
 }
 
 -(BOOL)processJSRequest:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
