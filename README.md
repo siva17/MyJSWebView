@@ -1,7 +1,7 @@
 MyJSWebView
 ===========
 
-Enable adding Javascript Interface to WebView JavaScript and have communication between JavaScript and Native Code
+Enable Javascript Interface to WebView JavaScript and have communication between JavaScript and Native Code
 
 iOS:
 ====
