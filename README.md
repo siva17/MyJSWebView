@@ -138,34 +138,35 @@ Goto MyJSUIWebView.m file and look for **registerJavaScriptAPIs** methond. Add f
 Now you can have all the Native APIs accessible in JavaScript as
 ```js
 // API with no parameters
-Example.APIOne()
+Example.APIOne();
 
 // API with parameters and no call back
-Example.APITwo({
+Example.APITwo(MY.getNativeParam({
 	"key1" : "key1 Value",
 	"key2" : "key2 Value"
-})
+});
 
 // API with parameters and call back
-Example.APIThree({
+Example.APIThree(MY.getNativeParam({
     "key1" : "key1 Value",
 	"key2" : "key2 Value",
     "callback" : function(param) {
         console.log("CallBack Parameter : "+JSON.stringify(param);
     }
-})
+});
 
 // API with parameters and call back with added returned value
-Example.APIFour({
+Example.APIFour(MY.getNativeParam({
     "key1" : "key1 Value",
     "key2" : "key2 Value",
     "callback" : function(param) {
         console.log("CallBack Parameter : "+JSON.stringify(param);
     }
-})
+}));
 ```
 
 ###Please note:
+* If the API needs to pass parameter, then it should be the return value of MY.getNativeParam() as shown above
 * If API needs to have callback function then JSON Object parameter should have the key as **callback**
 * Native APIs can return only string type (NSString which will translate to string in JavaScript)
 * Check out ExampleAPIs->TestAPIOne.m file for more possible options
