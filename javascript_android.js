@@ -5,10 +5,8 @@ MY = (function(w,my){
 	var callBacksFromNative = {};
     
     my.invokeJSCallback = function(cbID,removeAfterExecute,config) {
-        console.log("invokeJSCallback:1:",cbID,removeAfterExecute,config);
         if(cbID) {
             var cb = callBacksFromNative[cbID];
-            console.log("invokeJSCallback:2:",cb);
             if(cb) {
                 if(removeAfterExecute) delete(callBacksFromNative[cbID]);
                 var retValue = '';
