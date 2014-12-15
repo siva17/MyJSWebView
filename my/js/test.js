@@ -51,26 +51,26 @@ function testOne() {
     testUpdateReturnValue(TestAPIOne.APIOne());
 }
 function testTwo() {
-    testUpdateRequest('TestAPIOne.APITwo({"t1":"t1 Value"})');
-    testUpdateReturnValue(TestAPIOne.APITwo({"t1":"t1 Value"}));
+    testUpdateRequest('TestAPIOne.APITwo(MY.getNativeParam({"t1":"t1 Value"}))');
+    testUpdateReturnValue(TestAPIOne.APITwo(MY.getNativeParam({"t1":"t1 Value"})));
 }
 function testThree() {
-    testUpdateRequest('TestAPIOne.APIThree({"t1":"t1 Value"})');
-    testUpdateReturnValue(TestAPIOne.APIThree({"t1":"t1 Value"}));
+    testUpdateRequest('TestAPIOne.APIThree(MY.getNativeParam({"t1":"t1 Value"}))');
+    testUpdateReturnValue(TestAPIOne.APIThree(MY.getNativeParam({"t1":"t1 Value"})));
 }
 function testFour() {
-    testUpdateRequest('TestAPIOne.APIFour({"t1":"t1 Value","callback":testLogCallBack})');
-    testUpdateReturnValue(TestAPIOne.APIFour({"t1":"t1 Value","callback":testLogCallBack}));
+    testUpdateRequest('TestAPIOne.APIFour(MY.getNativeParam({"t1":"t1 Value","callback":testLogCallBack}))');
+    testUpdateReturnValue(TestAPIOne.APIFour(MY.getNativeParam({"t1":"t1 Value","callback":testLogCallBack})));
 }
 function testFive() {
-    testUpdateRequest('TestAPIOne.APIFive({"t1":"t1 Value","callback":testLogCallBack})');
-    testUpdateReturnValue(TestAPIOne.APIFive({"t1":"t1 Value","callback":testLogCallBack}));
+    testUpdateRequest('TestAPIOne.APIFive(MY.getNativeParam({"t1":"t1 Value","callback":testLogCallBack}))');
+    testUpdateReturnValue(TestAPIOne.APIFive(MY.getNativeParam({"t1":"t1 Value","callback":testLogCallBack})));
 }
 function testSix() {
-    testUpdateRequest('TestAPIOne.APISix({"t1":"t1 Value","callback":testLogCallBack})');
-    testUpdateReturnValue(TestAPIOne.APISix({"t1":"t1 Value","callback":testLogCallBack}));
+    testUpdateRequest('TestAPIOne.APISix(MY.getNativeParam({"t1":"t1 Value","callback":testLogCallBack}))');
+    testUpdateReturnValue(TestAPIOne.APISix(MY.getNativeParam({"t1":"t1 Value","callback":testLogCallBack})));
 }
 function testSeven() {
-    testUpdateRequest('TestAPIOne.APISeven({"t1":"t1 Value","callback":testLogCallBack})');
-    testUpdateReturnValue(TestAPIOne.APISeven({"t1":"t1 Value","callback":testLogCallBack}));
+    testUpdateRequest('TestAPIOne.APISeven(MY.getNativeParam({"t1":"t1 Value","callback":testLogCallBack}))');
+    testUpdateReturnValue(TestAPIOne.APISeven(MY.getNativeParam({"t1":"t1 Value","callback":testLogCallBack})));
 }

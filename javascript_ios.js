@@ -1,7 +1,6 @@
 window.MY = window.MY || {};
 
 MY = (function(w,my){
-    my.NATIVEAPI = {};
       
 	var callBacksFromNative = {};
     
@@ -23,19 +22,23 @@ MY = (function(w,my){
         iframe.parentNode.removeChild(iframe);
         iframe = null;
 
-        var ret = MY.NATIVEAPI.retValue;
-        MY.NATIVEAPI.retValue = undefined;
+        var ret = MY.retValue;
+        MY.retValue = undefined;
         if(ret) return decodeURIComponent(ret);
     };
       
-    my.NATIVEAPI.invokeJSCallback = function(cbID,removeAfterExecute,config) {
-        var cb = callBacksFromNative[cbID];
-        if(removeAfterExecute) delete(callBacksFromNative[cbID]);
-      	if(config.callbackID) delete(config.callbackID);
-        return cb.call(null, config);
+    my.invokeJSCallback = function(cbID,removeAfterExecute,config) {
+        if(cbID) {
+            var cb = callBacksFromNative[cbID];
+            if(cb) {
+                if(removeAfterExecute) delete(callBacksFromNative[cbID]);
+                if(config.callbackID) delete(config.callbackID);
+                cb.call(null, config);
+            }
+        }
     };
 
-    my.NATIVEAPI.registerJSModule = function(obj,methods) {
+    my.registerJSModule = function(obj,methods) {
         w[obj] = {};
         var jsObj = w[obj];
 
@@ -50,5 +53,9 @@ MY = (function(w,my){
         }
     };
     
+    my.getNativeParam = function(config) {
+        return config;
+    };
+
 	return my;
 })(window,MY);

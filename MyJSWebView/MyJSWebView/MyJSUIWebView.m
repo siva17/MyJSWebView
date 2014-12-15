@@ -52,14 +52,14 @@
     
     // Inject base JavaScript API for inject mechanism
 	[self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"%@%@%@",
-                                                  @"window.MY=window.MY||{};MY=(function(b,c){c.NATIVEAPI={};var a={};var d=function(j,i,f){var k=':';if(f){if(f.callback){var g='cbID'+(+new Date);a[g]=f.callback;f.callbackID=g}k+=encodeURIComponent(JSON.stringify(f))}var h=document.createElement('IFRAME');h.setAttribute('src','",
+                                                  @"window.MY=window.MY||{};MY=(function(b,c){var a={};var d=function(j,i,f){var k=':';if(f){if(f.callback){var g='cbID'+(+new Date);a[g]=f.callback;f.callbackID=g}k+=encodeURIComponent(JSON.stringify(f))}var h=document.createElement('IFRAME');h.setAttribute('src','",
                                                   NATIVE_API_SCHEMA,
-                                                  @"'+':'+j+':'+encodeURIComponent(i)+k);document.documentElement.appendChild(h);h.parentNode.removeChild(h);h=null;var e=MY.NATIVEAPI.retValue;MY.NATIVEAPI.retValue=undefined;if(e){return decodeURIComponent(e)}};c.NATIVEAPI.invokeJSCallback=function(g,h,f){var e=a[g];if(h){delete (a[g])}if(f.callbackID){delete (f.callbackID)}return e.call(null,f)};c.NATIVEAPI.registerJSModule=function(h,f){b[h]={};var j=b[h];for(var g=0,e=f.length;g<e;g++){(function(){var k=f[g];var i=k.replace(new RegExp(':','g'),'');j[i]=function(){return d(h,k,arguments[0])}})()}};return c})(window,MY);"]];
+                                                  @"'+':'+j+':'+encodeURIComponent(i)+k);document.documentElement.appendChild(h);h.parentNode.removeChild(h);h=null;var e=MY.retValue;MY.retValue=undefined;if(e){return decodeURIComponent(e)}};c.invokeJSCallback=function(g,h,f){if(g){var e=a[g];if(e){if(h){delete (a[g])}if(f.callbackID){delete (f.callbackID)}e.call(null,f)}}};c.registerJSModule=function(h,f){b[h]={};var j=b[h];for(var g=0,e=f.length;g<e;g++){(function(){var k=f[g];var i=k.replace(new RegExp(':','g'),'');j[i]=function(){return d(h,k,arguments[0])}})()}};c.getNativeParam=function(e){return e};return c})(window,MY);"]];
     
     NSMutableString* injectJSAPI = [[NSMutableString alloc] init];
     for(id key in self.nativeModules) {
         NSObject* jsModule = [self.nativeModules objectForKey:key];
-        [injectJSAPI appendFormat:@"%@%@%@",@"MY.NATIVEAPI.registerJSModule(\"",key,@"\", ["];
+        [injectJSAPI appendFormat:@"%@%@%@",@"MY.registerJSModule(\"",key,@"\", ["];
         unsigned int mc = 0;
         Class cls = object_getClass(jsModule);
         Method * mlist = class_copyMethodList(cls, &mc);
@@ -103,9 +103,9 @@
             [invoker getReturnValue:&retValue];
             if(retValue) {
                 retValue = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef) retValue, NULL, (CFStringRef)@"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8));
-                [webView stringByEvaluatingJavaScriptFromString:[@"" stringByAppendingFormat:@"MY.NATIVEAPI.retValue = \"%@;\"", retValue]];
+                [webView stringByEvaluatingJavaScriptFromString:[@"" stringByAppendingFormat:@"MY.retValue = \"%@;\"", retValue]];
             } else {
-                [webView stringByEvaluatingJavaScriptFromString:@"MY.NATIVEAPI.retValue=null;"];
+                [webView stringByEvaluatingJavaScriptFromString:@"MY.retValue=null;"];
             }
         }
         config = nil;
@@ -157,7 +157,7 @@
             if(!removeAfterExecute) removeAfterExecute = @"true";
             NSData *jsonData = [NSJSONSerialization dataWithJSONObject:config options:0 error:nil];
             NSString *jsonString = [[NSString alloc] initWithBytes:[jsonData bytes] length:[jsonData length] encoding:NSUTF8StringEncoding];
-            NSString* jsAPIToExecute = [NSString stringWithFormat:@"MY.NATIVEAPI.invokeJSCallback(\"%@\", %@, %@);",callbackID,removeAfterExecute,jsonString];
+            NSString* jsAPIToExecute = [NSString stringWithFormat:@"MY.invokeJSCallback(\"%@\", %@, %@);",callbackID,removeAfterExecute,jsonString];
             [self stringByEvaluatingJavaScriptFromString:jsAPIToExecute];
         }
     }
