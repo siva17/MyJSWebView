@@ -11,6 +11,7 @@ MY = (function(w,my){
                 if(removeAfterExecute) delete(callBacksFromNative[cbID]);
                 var retValue = '';
                 try {retValue = JSON.parse(config);}catch(e){}
+                if(retValue.callbackID) delete(retValue.callbackID);
                 cb.call(null, retValue);
             }
         }
