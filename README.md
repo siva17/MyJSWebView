@@ -34,11 +34,9 @@ Copy the folder "my" (JavaScript and HTML code with example) to your project whi
 * index.html		-> Index file with example code
 * js\test.js		-> Example JavaScript code having Native APIs mapped 
 
-If your index.html file is in different place, please make sure to change the name of the file (with out .html extension) in MyJSUIWebView\MyJSUIWebView\MyJSUIWebView.h file as shown below. You can also change the URL schema according to your requirement. As of now it is defined as 'native-api' as shown below.
+You can also change the URL schema according to your requirement. As of now it is defined as 'native-api' as shown below.
 
 ```obj-c
-// Should be with out .html extension
-#define INDEX_FILE_PATH_AND_FILE    @"my/index"
 //Case insensitive
 #define NATIVE_API_SCHEMA           @"native-api"
 ```
@@ -62,6 +60,7 @@ Your View Controller code should look like this by updating appropriately.
 ```obj-c
 #import "ViewController.h"
 #import "MyJSUIWebView.h"
+#import "TestAPIOne.h"
 
 @interface ViewController ()
 @property(nonatomic,retain) IBOutlet MyJSUIWebView	*webView;
@@ -71,7 +70,8 @@ Your View Controller code should look like this by updating appropriately.
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-	[self.webView initializeWebView];
+    [self.webView registerJavaScriptAPI:[[TestAPIOne alloc]initWithWebView:self.webView]];
+    [self.webView loadHTML:@"my/index"]; // Should be with out .html extension
 }
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
@@ -79,6 +79,8 @@ Your View Controller code should look like this by updating appropriately.
 }
 @end
 ```
+
+If your index.html file is in different place, please make sure to change the name of the file (with out .html extension) in your view controller as shown above.
 
 * Goto your Storyboard or xib containing your View Controller and add WebView to it appropriately. Select the WebView 
 * Go to Custom Class tab and update the Class to “MyJSUIWebView” and Restoration ID to “MyJSUIWebView”
@@ -130,9 +132,9 @@ Add new Objective-C Class (say Example) inheriting from **MyJSBaseNativeModule**
 @end
 ```
 
-Goto MyJSUIWebView.m file and look for **registerJavaScriptAPIs** methond. Add following line of code to register your module
+In your view controller, need to register this API look for **registerJavaScriptAPI** methond. 
 ```obj-c
-[self registerNativeModule:[[Example alloc]initWithWebView:self] jsModule:@"Example"];
+    [self.webView registerJavaScriptAPI:[[TestAPIOne alloc]initWithWebView:self.webView]];
 ```
 
 Now you can have all the Native APIs accessible in JavaScript as
@@ -166,7 +168,7 @@ Example.APIFour(MY.getNativeParam({
 ```
 
 ###Please note:
-* If the API needs to pass parameter, then it should be the return value of MY.getNativeParam() as shown above
+* If the API needs to pass JSON Object as parameter, then it should be the return value of MY.getNativeParam() as shown above
 * If API needs to have callback function then JSON Object parameter should have the key as **callback**
 * Native APIs can return only string type (NSString which will translate to string in JavaScript)
 * Check out ExampleAPIs->TestAPIOne.m file for more possible options
