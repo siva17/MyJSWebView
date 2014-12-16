@@ -45,8 +45,6 @@ Optionally, you can copy the Example Code "ExampleAPIs" for reference Contains f
 * TestAPIOne.h
 * TestAPIOne.m
 
-As of now, this API (TestAPIOne) is registered in MyJSUIWebView.h, so please remove the respective registration code if your are not using the above.
-
 **Adding required files to Project**
 
 * **Objective-C Code:** Drag and drop "MyJSWebView" folder on to iOS project and add as "Add folders -> Create Groups" option
@@ -132,10 +130,12 @@ Add new Objective-C Class (say Example) inheriting from **MyJSBaseNativeModule**
 @end
 ```
 
-In your view controller, need to register this API look for **registerJavaScriptAPI** methond. 
+In your view controller, need to register this API. Look for **registerJavaScriptAPI** method. 
 ```obj-c
     [self.webView registerJavaScriptAPI:[[TestAPIOne alloc]initWithWebView:self.webView]];
 ```
+
+As of now, this API (TestAPIOne) is registered, so please remove the above registration code if your are not using the TestAPIOne.
 
 Now you can have all the Native APIs accessible in JavaScript as
 ```js
