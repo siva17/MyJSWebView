@@ -29,6 +29,7 @@
 
 #import "ViewController.h"
 #import "MyJSUIWebView.h"
+#import "TestAPIOne.h"
 
 @interface ViewController ()
 @property(nonatomic,retain) IBOutlet MyJSUIWebView	*webView;
@@ -38,7 +39,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self.webView initializeWebView];
+    [self.webView registerJavaScriptAPI:[[TestAPIOne alloc]initWithWebView:self.webView]];
+    [self.webView loadHTML:@"my/index"]; // Should be with out .html extension
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

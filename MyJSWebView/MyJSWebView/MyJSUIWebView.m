@@ -29,7 +29,9 @@
 
 #import <objc/runtime.h>
 #import "MyJSUIWebView.h"
-#import "TestAPIOne.h"
+
+//Case insensitive
+#define NATIVE_API_SCHEMA		@"native-api"
 
 @interface MyJSUIWebView()
 @property(nonatomic,retain) NSMutableDictionary	*nativeModules;
@@ -44,9 +46,7 @@
     return _nativeModules;
 }
 
--(void)registerNativeModule:(NSObject *)instance jsModule:(NSString *)jsModule {
-    [self.nativeModules setValue:instance forKey:jsModule];
-}
+#pragma mark - Private APIs
 
 -(void)injectJavaScriptAPIs {
     
@@ -115,6 +115,8 @@
     return YES;
 }
 
+#pragma mark - Webview Delegates
+
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
 }
 -(void)webViewDidFinishLoad:(UIWebView *)webView {
@@ -126,25 +128,15 @@
     return [self processJSRequest:webView shouldStartLoadWithRequest:request navigationType:navigationType];
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
+#pragma mark - Public APIs
 
--(void)registerJavaScriptAPIs {
-    [self registerNativeModule:[[TestAPIOne alloc]initWithWebView:self] jsModule:@"TestAPIOne"];
+-(void)registerJavaScriptAPI:(NSObject *)instance {
+    [self.nativeModules setValue:instance forKey:NSStringFromClass([instance class])];
 }
 
--(void)initializeWebView {
-    
+-(void)loadHTML:(NSString *)url {
     self.delegate = self;
-    
-    [self registerJavaScriptAPIs];
-    
-    NSString *htmlContent = [[NSString alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:INDEX_FILE_PATH_AND_FILE ofType:@"html"] encoding:NSUTF8StringEncoding error:NULL];
+    NSString *htmlContent = [[NSString alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:url ofType:@"html"] encoding:NSUTF8StringEncoding error:NULL];
     NSURL *baseUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]];
     [self loadHTMLString:htmlContent baseURL:baseUrl];
 }

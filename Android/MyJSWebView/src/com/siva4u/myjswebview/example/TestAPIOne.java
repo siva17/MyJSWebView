@@ -15,6 +15,7 @@ public class TestAPIOne extends MyJSBaseNativeModule {
 	@JavascriptInterface
 	public void APIOne() {
 		System.out.println("MyJSWebViewApp: TestAPIOne:APIOne: START");
+        Toast.makeText(webViewContext, "Hello....", Toast.LENGTH_SHORT).show();
 	}
 	
     @JavascriptInterface

@@ -27,13 +27,12 @@
 //
 //
 
-// Should be with out .html extension
-#define INDEX_FILE_PATH_AND_FILE	@"my/index"
-//Case insensitive
-#define NATIVE_API_SCHEMA			@"native-api"
-
 #import <UIKit/UIKit.h>
 @interface MyJSUIWebView : UIWebView <UIWebViewDelegate>
--(void)initializeWebView;
+
+-(void)registerJavaScriptAPI:(NSObject *)instance;
+-(void)loadHTML:(NSString *)url;
+
+// Protected API
 -(void)callCallback:(NSDictionary *)config;
 @end

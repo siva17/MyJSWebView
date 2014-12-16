@@ -15,6 +15,6 @@ import android.os.Bundle;
         setContentView(R.layout.activity_main);
         MyJSWebView myWebView = (MyJSWebView)findViewById(R.id.webView);
         myWebView.registerJavaScriptAPI(new TestAPIOne(this,myWebView));
-        myWebView.loadUrl("file:///android_asset/my/index.html");
+        myWebView.loadHTLM("file:///android_asset/my/index.html");
     }
 }

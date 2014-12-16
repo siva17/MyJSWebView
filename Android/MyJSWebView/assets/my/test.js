@@ -59,7 +59,7 @@ function testThree() {
     testUpdateReturnValue(TestAPIOne.APIThree(MY.getNativeParam({"t1":"t1 Value"})));
 }
 function testFour() {
-    testUpdateRequest('TestAPIOne.APIFour(MY.getNativeParam({"t1":"t1 Value"}))');
+    testUpdateRequest('TestAPIOne.APIFour(MY.getNativeParam({"t1":"t1 Value"})))');
     testUpdateReturnValue(TestAPIOne.APIFour(MY.getNativeParam({"t1":"t1 Value"})));
 }
 function testFive() {

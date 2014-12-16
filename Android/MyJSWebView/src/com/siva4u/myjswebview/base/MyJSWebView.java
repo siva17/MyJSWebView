@@ -66,4 +66,8 @@ public class MyJSWebView extends WebView {
 	public void registerJavaScriptAPI(MyJSBaseNativeModule instance) {
 		addJavascriptInterface(instance, instance.getClass().getSimpleName());
 	}
+	
+	public void loadHTLM(String url) {
+		this.loadUrl(url);
+	}
 }
