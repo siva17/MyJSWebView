@@ -173,6 +173,14 @@ Example.APIFour(MY.getNativeParam({
 * Native APIs can return only string type (NSString which will translate to string in JavaScript)
 * Check out ExampleAPIs->TestAPIOne.m file for more possible options
 
+Android:
+========
+Create an empty Android Project.
+
+###Adding MyJSWebView package (com.siva4u.myjswebview.base)
+
+###Adding Example package (com.siva4u.myjswebview.example)
+
 
 
 Credits: Concept is copied from github (https://github.com/andiradulescu/EasyJSWebView) and modified to my way of API (with config as parameter and simplified).
