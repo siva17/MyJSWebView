@@ -177,9 +177,11 @@ Android:
 ========
 Create an empty Android Project.
 
-###Adding MyJSWebView package (com.siva4u.myjswebview.base)
+###Adding MyJSWebView package
+(com.siva4u.myjswebview.base)
 
-###Adding Example package (com.siva4u.myjswebview.example)
+###Adding Example package
+(com.siva4u.myjswebview.example)
 
 
 
