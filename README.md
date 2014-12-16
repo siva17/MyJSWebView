@@ -175,5 +175,5 @@ Example.APIFour(MY.getNativeParam({
 
 
 
-Credits: Concept is copied from github (https://github.com/andiradulescu/EasyJSWebView) and modified to my way of API (with config as parameter).
+Credits: Concept is copied from github (https://github.com/andiradulescu/EasyJSWebView) and modified to my way of API (with config as parameter and simplified).
 
